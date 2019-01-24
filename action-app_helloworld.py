@@ -40,7 +40,7 @@ class helloworld(object):
         print '[Received] intent: {}'.format(intent_message.intent.intent_name)
 
         # if need to speak the execution result by tts
-        hermes.publish_start_session_notification(intent_message.site_id, "hallo Florian", "")
+        hermes.publish_start_session_notification(intent_message.site_id, "hallo Florian", "helloworld-app")
 
 
 
