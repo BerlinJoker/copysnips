@@ -38,7 +38,7 @@ class helloworld(object):
         
         # action code goes here...
         print '[Received] intent: {}'.format(intent_message.intent.intent_name)
-		print("hallo_callback läuft")
+        print("hallo_callback läuft")
 
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "hallo Florian", "helloworld-app")
