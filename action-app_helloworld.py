@@ -38,6 +38,7 @@ class helloworld(object):
         
         # action code goes here...
         print '[Received] intent: {}'.format(intent_message.intent.intent_name)
+		print("hallo_callback läuft")
 
         # if need to speak the execution result by tts
         hermes.publish_start_session_notification(intent_message.site_id, "hallo Florian", "helloworld-app")
@@ -51,8 +52,6 @@ class helloworld(object):
         coming_intent = intent_message.intent.intent_name
         if coming_intent == 'Lakini:hallo':
             self.hallo_callback(hermes, intent_message)
-        if coming_intent == 'intent_2':
-            self.intent_2_callback(hermes, intent_message)
 
         # more callback and if condition goes here...
 
