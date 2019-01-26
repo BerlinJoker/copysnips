@@ -1,4 +1,5 @@
 # no section for preset values
 
 [secret]
+apikey="aaa"
 #empty value for secret values
