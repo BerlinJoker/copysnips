@@ -5,6 +5,8 @@ from snipsTools import SnipsConfigParser
 from hermes_python.hermes import Hermes
 from hermes_python.ontology import *
 import io
+import requests
+import json
 
 CONFIG_INI = "config.ini"
 
@@ -37,11 +39,21 @@ class helloworld(object):
         hermes.publish_end_session(intent_message.session_id, "")
         
         # action code goes here...
-        print '[Received] intent: {}'.format(intent_message.intent.intent_name)
+        # print '[Received] intent: {}'.format(intent_message.intent.intent_name)
         print("hallo_callback läuft")
-
+        apikey = conf['secret']['apikey']
+        stationReinickendorf = 2848756
+        stationBerlin = 2950159
+        stationMitte = 6545310
+        url = "http://api.openweathermap.org/data/2.5/weather?id="+str(stationBerlin)+"&appid="+apikey
+        response = requests.get(url)
+        weatherDic = json.loads(response.text)
+        mainTemp = weatherDic["main"]
+        temperatur = mainTemp["temp"]
+        celsius = str(int(temperatur)-273)+" Grad Celsius"
+		
         # if need to speak the execution result by tts
-        hermes.publish_start_session_notification(intent_message.site_id, "hallo Florian", "helloworld-app")
+        hermes.publish_start_session_notification(intent_message.site_id, celsius, "helloworld-app")
 
 
 
